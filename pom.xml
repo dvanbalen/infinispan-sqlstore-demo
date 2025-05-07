@@ -10,6 +10,7 @@
     <name>Infinispan :: SQL Store Demo :: R00T</name>
     <modules>
         <module>retail-catalogue</module>
-        <module>inmemory-catalogue</module>
+        <module>quarkus-inmemory-catalogue</module>
+        <module>spring-boot-inmemory-catalogue</module>
     </modules>
 </project>
