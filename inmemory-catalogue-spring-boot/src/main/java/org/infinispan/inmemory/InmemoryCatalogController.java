@@ -7,6 +7,7 @@ import org.infinispan.inmemory.config.InmemoryCatalogueConfig;
 import org.infinispan.inmemory.schema.PurchasedProductKey;
 import org.infinispan.inmemory.schema.PurchasedProductValue;
 import org.infinispan.inmemory.schema.RetailProductValue;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -31,6 +32,14 @@ public class InmemoryCatalogController {
         configureSQLStore.onStart();
         this.catalogue = cacheManager.getCache(config.getCatalogCacheName());
         this.soldProducts = cacheManager.getCache(config.getSoldProductsName());
+    }
+
+    @Value("${testproperty}")
+    private String fromFile;
+
+    @GetMapping("conf")
+    public String configuration() {
+        return fromFile;
     }
 
     @GetMapping("health")
